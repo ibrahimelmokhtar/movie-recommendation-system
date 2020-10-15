@@ -5,12 +5,13 @@ def main():
     # enter movie title: (for example)
     movieTitle = "inception"
 
-    # get movie's data using OMDB API:
-    movieData = get_movie_data(movieTitle)
+    # get movie's rating:
+    source = 'Rotten Tomatoes'
+    movieRating, movieID = get_movie_ratingAndID(movieTitle, source)
 
-    # display readable data:
-    readable = json.dumps(movieData, indent=4)
-    print(f"Fetched data:\n{readable}")
+    print(f"Title: {movieTitle}")
+    print(f"\tIMDB ID: {movieID}")
+    print(f"\t{source}: {movieRating}")
 
 
 if __name__ == "__main__":
