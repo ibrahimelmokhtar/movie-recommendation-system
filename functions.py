@@ -17,7 +17,6 @@ def get_movie_data(movieTitle):
     params['t'] = movieTitle    # t: movie title to search for
 
     response = requests.get(baseurl, params=params)
-    print(f"Fetching URL: {response.url}")
 
     return response.json()
 
@@ -76,7 +75,7 @@ def get_similar_movies_data(movieID):
             (movieRating, movieID) = get_movie_ratingAndID(title)
             moviesData[title] = movieRating
         except:
-            print(f"Error 404: No 'Ratings' tag for {title}")
+            pass
 
     return moviesData
 

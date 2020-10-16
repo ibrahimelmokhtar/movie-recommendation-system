@@ -4,23 +4,19 @@ import sys
 
 def main():
     # enter movie title: (for example)
-    movieTitle = "iron man"
+    movieTitle = input("Enter movie title: ")
 
     # get movie's rating:
     source = 'Rotten Tomatoes'
     try:
+        print("Processing your request ...")
         movieRating, movieID = get_movie_ratingAndID(movieTitle)
     except:
         print("Movie title is NOT correct")
         sys.exit(0)
 
-    print(f"Title: {movieTitle}")
-    print(f"\tIMDB ID: {movieID}")
-    print(f"\t{source}: {movieRating}")
-
     # get similar movies' data:
     moviesData = get_similar_movies_data(movieID)
-    print(json.dumps(moviesData, indent=4))
 
     # sort similar movies from highest ratings to lowest ratings:
     sortedMovies = sort_similar_movies(moviesData)
