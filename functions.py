@@ -23,7 +23,7 @@ def get_movie_data(movieTitle):
 
 
 # returns movie rating and IMDB ID for specific movie title:
-def get_movie_ratingAndID(movieTitle, source_name):
+def get_movie_ratingAndID(movieTitle, source_name='Rotten Tomatoes'):
     """
     input   :   - the title of desired movie
             and - desired rating's source name (examples: 'Rotten Tomatoes', 'Internet Movie Database', ... etc.)
@@ -52,3 +52,30 @@ def get_similar_movies(movieID):
     response = requests.get(baseurl)
 
     return response.json()
+
+
+def get_similar_movies_data(movieID):
+    """
+    input   : movie IMDB ID
+    output  : similar movies specific data
+                in form of: {'title': ['movieID', 'movieRating'], ...}
+    """
+
+    # get similar movies:
+    tmdb_results = get_similar_movies(movieID)
+
+    # collect all acquired titles:
+    titles = []
+    for result in tmdb_results['results']:
+        titles.append(result['title'])
+
+    # get similar movies' data:
+    moviesData = {}
+    for title in titles:
+        try:
+            (movieRating, movieID) = get_movie_ratingAndID(title)
+            moviesData[title] = movieRating
+        except:
+            print(f"Error 404: No 'Ratings' tag for {title}")
+
+    return moviesData
