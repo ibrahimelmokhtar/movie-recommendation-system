@@ -79,3 +79,18 @@ def get_similar_movies_data(movieID):
             print(f"Error 404: No 'Ratings' tag for {title}")
 
     return moviesData
+
+
+def sort_similar_movies(moviesData):
+    """
+    input   : similar movies data
+    output  : sorted movies based on ratings
+    """
+
+    sortedTitles = sorted(moviesData, key=moviesData.get, reverse=True)
+
+    sortedMovies = []
+    for title in sortedTitles:
+        sortedMovies.append((title, moviesData[title]))
+
+    return sortedMovies

@@ -22,6 +22,10 @@ def main():
     moviesData = get_similar_movies_data(movieID)
     print(json.dumps(moviesData, indent=4))
 
+    # sort similar movies from highest ratings to lowest ratings:
+    sortedMovies = sort_similar_movies(moviesData)
+    print(json.dumps(sortedMovies, indent=4))
+
 
 if __name__ == "__main__":
     main()
