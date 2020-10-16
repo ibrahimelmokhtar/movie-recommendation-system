@@ -93,3 +93,18 @@ def sort_similar_movies(moviesData):
         sortedMovies.append((title, moviesData[title]))
 
     return sortedMovies
+
+def display_top_movies(sortedMovies, number):
+    """
+    input   :   - sorted list of movies with title and rating
+                - number of items to display
+    output  : NONE
+    """
+
+    if len(sortedMovies) < number:
+        number = len(sortedMovies)
+        print(f"There is ONLY {number} movies\n")
+
+    for i in range(number):
+        movie = sortedMovies[i]
+        print(f"{movie[0]} : {movie[1]}")

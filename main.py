@@ -20,7 +20,16 @@ def main():
 
     # sort similar movies from highest ratings to lowest ratings:
     sortedMovies = sort_similar_movies(moviesData)
-    print(json.dumps(sortedMovies, indent=4))
+
+    # display top-rated movies:
+    try:
+        print("")
+        maximumDisplayed = int(input("Enter number of movies: "))
+    except:
+        print("Invalid input: please enter a number")
+        sys.exit(0)
+
+    display_top_movies(sortedMovies, maximumDisplayed)
 
 
 if __name__ == "__main__":
