@@ -1,9 +1,7 @@
 # required packages:
 import requests
 import json
-
-# enter the required api-keys:
-omdb_apikey = input("Enter your OMDB api-key: ")
+from config import *
 
 
 # returns data about specific movie using OMDB API:

@@ -4,7 +4,7 @@ import sys
 
 def main():
     # enter movie title: (for example)
-    movieTitle = "iron man"
+    movieTitle = "ironman"
 
     # get movie's rating:
     source = 'Rotten Tomatoes'
