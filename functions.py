@@ -40,3 +40,15 @@ def get_movie_ratingAndID(movieTitle, source_name):
             break
 
     return (movieRating, movieID)
+
+# returns data about movies similar to specific movie using TMDB API:
+def get_similar_movies(movieID):
+    """
+    input   : movie IMDB ID
+    output  : json data with movies similar to that specific movie
+    """
+
+    baseurl = f"https://api.themoviedb.org/3/movie/{movieID}/similar?api_key={tmdb_apikey}&language=en-US&page=1"
+    response = requests.get(baseurl)
+
+    return response.json()
